@@ -1,6 +1,7 @@
 
-// The Caesar Cipher based on a Haskell implementation from "Programming in Haskell".
-// Dlang implementation (c) Antonio Corbi, GPL3 code
+// The Caesar Cipher based on a Haskell implementation from
+// "Programming in Haskell" by Graham Hutton.  Dlang implementation
+// (c) Antonio Corbi, GPL3 code
 
 /////////////
 // IMPORTS //
