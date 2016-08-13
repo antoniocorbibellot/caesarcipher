@@ -1,0 +1,9 @@
+{
+	"name": "caesarcipher",
+	"authors": [
+		"acorbi"
+	],
+	"description": "A minimal D application.",
+	"copyright": "Copyright © 2016, acorbi",
+	"license": "proprietary"
+}
