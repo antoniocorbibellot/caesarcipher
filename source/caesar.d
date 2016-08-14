@@ -14,15 +14,10 @@ import std.ascii, std.string : countchars;
 //////////
 // CODE //
 //////////
-int let2int (char c) {
-  return cast(int) (c - 'a');
-}
+int let2int (char c) { return cast(int) (c - 'a'); }
 
 char int2let (int n) {
-  if (n >= 0)
-    return cast(char) ('a' + n);
-  else
-    return cast(char) ('z' + n + 1);
+    return (n >= 0) ? cast(char) ('a' + n) : cast(char) ('z' + n + 1);
 }
 
 char shift (int n, char c) {
@@ -43,13 +38,9 @@ float percent (int n, int m) {
 }
 
 auto positions(Range) (float x, Range fl) {
-  //int[] il;
-  
-  auto r = zip (fl, iota(fl.length)).filter!(t => t[0]==x).map!(t => cast(int)t[1]);
-
-  //r.each!(a => il ~= cast(int)a);
-  
-  return r;
+  return zip (fl, iota(fl.length)).
+    filter!(t => t[0]==x).
+    map!(t => cast(int)t[1]);
 }
 
 int lowers (string s) {
