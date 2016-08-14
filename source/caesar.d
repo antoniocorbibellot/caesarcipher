@@ -25,8 +25,6 @@ char int2let (int n) {
 }
 
 char shift (int n, char c) {
-  import std.ascii;
-  
   return isLower (c) ? int2let ((let2int (c) + n) % 26) : c;
 }
 
