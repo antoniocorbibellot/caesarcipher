@@ -51,7 +51,7 @@ int cccount (char c, string s) {
   return cast(int) countchars(s, to!string(c));
 }
 
-float[] freqs (string s) {
+auto freqs (string s) {
   float[] f;
   auto allChars = "abcdefghijklmnopqrstuvwxyz";
   auto n = lowers(s);
@@ -70,20 +70,15 @@ float chisqr (float[] os, float[] es) {
   return zip(os, es).map!(t => ((t[0]-t[1])^^2)/t[1]).sum;
 }
 
-float[] rotate (int n, float[] fl) {
-  float[] f;
-  
-  auto r = fl.drop(n) ~ fl.take(n);
-  r.each!(a => f ~= a);
-  
-  return f;
+auto rotate(Range) (int n, Range fl) {
+  return fl.drop(n) ~ fl.take(n);
 }
 
 string crack (string s) {
   // English letters frequency
   float[] table = [8.2, 1.5, 2.8, 4.3, 12.7, 2.2, 2.0, 6.1, 7.0, 0.2, 0.8, 4.0, 2.4,
                    6.7, 7.5, 1.9, 0.1, 6.0,  6.3, 9.1, 2.8, 1.0, 2.4, 0.2, 2.0, 0.1];
-  float[] table2 = s.freqs;
+  auto table2 = s.freqs;
 
   auto chitabr = iota(26).map!(n => rotate(n, table2).chisqr(table));
   // float[] chitab;
