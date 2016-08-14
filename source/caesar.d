@@ -7,7 +7,8 @@
 // IMPORTS //
 /////////////
 import std.stdio, std.conv;
-import std.algorithm, std.algorithm.searching, std.range;
+import std.algorithm, std.algorithm.searching;
+import std.range;
 import std.ascii, std.string : countchars;
 
 //////////
@@ -41,14 +42,14 @@ float percent (int n, int m) {
   return (n / cast(float) m) * 100;
 }
 
-int[] positions (float x, float[] fl) {
-  int[] il;
+auto positions(Range) (float x, Range fl) {
+  //int[] il;
   
-  auto r = zip (fl, iota(fl.length)).filter!(t => t[0]==x).map!(t => t[1]);
+  auto r = zip (fl, iota(fl.length)).filter!(t => t[0]==x).map!(t => cast(int)t[1]);
 
-  r.each!(a => il ~= cast(int)a);
+  //r.each!(a => il ~= cast(int)a);
   
-  return il;
+  return r;
 }
 
 int lowers (string s) {
@@ -94,10 +95,10 @@ string crack (string s) {
   float[] table2 = s.freqs;
 
   auto chitabr = iota(26).map!(n => rotate(n, table2).chisqr(table));
-  float[] chitab;
-  chitabr.each!(a => chitab ~= a);
-  auto minval = reduce!(min)(chitab);
-  auto factor = positions (minval, chitab)[0];
+  // float[] chitab;
+  // chitabr.each!(a => chitab ~= a);
+  auto minval = reduce!(min)(chitabr);
+  auto factor = positions (minval, chitabr).front;
   
   return decode (factor, s);
 }
