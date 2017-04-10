@@ -29,7 +29,7 @@ auto positions(float x, float[] fl) pure {
   return fl.zip(fl.length.iota).filter!(t => t[0]==x).map!(t => t[1]);
 }
 
-float chisqr(float[] os, float[] es) pure @nogc {
+float chisqr(float[] os, float[] es) pure {
   return os.zip(es).map!(t => ((t[0]-t[1])^^2)/t[1]).sum;
 }
 
