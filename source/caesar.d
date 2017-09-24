@@ -56,7 +56,8 @@ int lowers (string s) {
 }
 
 int cccount (char c, string s) {
-  return cast(int) countchars(s, to!string(c));
+  return cast(int) count(s, c);
+  //return cast(int) countchars(s, to!string(c));
 }
 
 float[] freqs (string s) {
